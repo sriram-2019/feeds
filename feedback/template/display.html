@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Table Example</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px; /* Add some margin for spacing */
+        }
+
+        /* Your existing button styles... */
+        .btn {
+            padding: 10px 20px;
+            background-color: #00a859;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #007944;
+        }
+
+.btn:hover {
+    background-color: #007944;
+}
+
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            border-right: 1px solid black; /* Add a black border between columns */
+            text-align: center;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .logout-btn {
+            position: relative;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1;
+            float: right;
+        }
+        .logout-button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 auto;
+            display: block;
+        }
+        .logout-button:hover {
+            background-color: #2980b9;
+        }
+        /* Apply dynamic width to the "Name" column */
+        td.name-cell {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100px; /* Adjust the max-width as needed */
+        }
+    </style>
+    
+</head>
+<body>
+    <input type="submit" class="logout-btn" value="Home" onclick="location.href='goto'">
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll_no</th>
+                    <th>Name</th>
+                    <th>dept</th>
+                    <th>year</th>
+                    <th>Q1</th>
+                    <th>Q2</th>
+                    <th>Q3</th>
+                    <th>Q4</th>
+                    <th>Q5</th>
+                    <th>Q6</th>
+                    <th>Q7</th>
+                    <th>Q8</th>
+                    <th>Q9</th>
+                    <th>Q10</th>
+                    <th>Q11</th>
+                    <th>Q12</th>
+                    <th>Q13</th>
+                    <th>Q14</th>
+                    <th>Q15</th>
+                    <th>Q16</th>
+                    <th>Q17</th>
+                    <th>Q18</th>
+                    <th>Q19</th>
+                    <th>Q20</th>
+                  
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in name %}
+                <tr>
+                    <td>{{ i.reg }}</td>
+                    <td>{{i.name}}</td>
+                    <td>{{i.dept}}</td>
+                    <td>{{i.year}}</td>
+                    <td>{{i.question1}}</td>                    <!-- Add 15 more columns as needed -->
+                    <td>{{i.question2}}</td>
+                    <td>{{i.question3}}</td>
+                    <td>{{i.question4}}</td>
+                    <td>{{i.question5}}</td>
+                    <td>{{i.question6}}</td>
+                    <td>{{i.question7}}</td>
+                    <td>{{i.question8}}</td>
+                    <td>{{i.question9}}</td>
+                    <td>{{i.question10}}</td>
+                    <td>{{i.question11}}</td>
+                    <td>{{i.question12}}</td>
+                    <td>{{i.question13}}</td>
+                    <td>{{i.question14}}</td>
+                    <td>{{i.question15}}</td>
+                    <td>{{i.question16}}</td>
+                    <td>{{i.question17}}</td>
+                    <td>{{i.question18}}</td>
+                    <td>{{i.question19}}</td>
+                    <td>{{i.question20}}</td>
+                  
+                    
+    </tr>
+
+                    
+                    
+                </tr>
+                {% endfor %}
+            
+            </tbody>
+        </table>
+        <div class="button-container">
+        <a href="{% url 'exc' %}" class="btn">Download Student Excel</a><br>
+        </div>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+			$.ajaxSetup({
+				beforeSend: function(xhr, settings) {
+					xhr.setRequestHeader("X-CSRFToken", csrftoken);
+				}
+			});
+            $('.logout-button').click(function(event){
+                $.ajax({
+                    type: "POST",
+					url: "/exc/",
+
+                });
+            });
+        })
+    </script>
+</body>
+</html>

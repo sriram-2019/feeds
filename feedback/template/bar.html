@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar Chart</title>
+    <style>
+        /* Style for the bar chart container */
+        .bar-chart {
+            display: flex;
+            align-items: center;
+            height: 600px;
+            width: 600px;
+            margin-top: 20px;
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style for individual bars */
+        .bar {
+            flex: 1;
+            background-color: #3498db;
+            margin: 0 5px;
+            transition: height 0.5s;
+            border-radius: 5px;
+        }
+
+        /* Style for bar labels */
+        .bar-label {
+            text-align: center;
+            margin-top: 5px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #000;
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+        }
+
+        /* Style for the blue color logout button */
+        .logout-button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .logout-button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Set the width of the chart container to 100% */
+        #barChartContainer {
+            width: 100%;
+        }
+        table {
+			border-collapse: collapse;
+			width: 100%;
+		}
+		th, td {
+			padding: 8px;
+			border-bottom: 1px solid #ddd;
+			text-align: center;
+		}
+		th {
+			background-color: #4CAF50;
+			color: white;
+		}
+		tr:hover {
+			background-color: #f5f5f5;
+		}
+    </style>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <h2>Bar Chart</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sno</th>
+                    <th>Dept</th>
+                    <th>No of student</th>
+                    
+                   
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        1
+                    </td>
+                    <td>
+                        "CSE"
+                    </td>
+                    <td>
+                        {{ totalcse }}
+                    </td>
+
+                    
+                </tr>
+                <tr>
+                    <td>
+                        2
+                    </td>
+                    <td>
+                        "IT"
+                    </td>
+                    <td>
+                        {{ totalit }}
+                    </td>
+
+                    
+                </tr>
+                <tr>
+                    <td>
+                        3
+                    </td>
+                    <td>
+                        "ece"
+                    </td>
+                    <td>
+                        {{ totalece }}
+                    </td>
+
+                    
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="bar-chart" id="barChartContainer">
+            <canvas id="barChart"></canvas>
+        </div>
+        <br>
+        <br>
+        <button class="logout-button">Logout</button>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery -->
+    <script>
+        // Get the context of the canvas element
+        var ctx = document.getElementById('barChart').getContext('2d');
+
+        // Define your data for the chart (replace with actual data from your Django context)
+        var data = {
+    labels: ['Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8', 'Q9', 'Q10', 'Q11', 'Q12', 'Q13', 'Q14', 'Q15', 'Q16', 'Q17', 'Q18', 'Q19', 'Q20'],
+    datasets: [
+        {
+            label: 'Average Ratings',
+            data: [
+                {{ mes|safe }},
+                {{ mes1|safe }},
+                {{ mes3|safe }},
+                {{ mes4|safe }},
+                {{ mes5|safe }},
+                {{ mes6|safe }},
+                {{ mes7|safe }},
+                {{ mes8|safe }},
+                {{ mes9|safe }},
+                {{ mes10|safe }},
+                {{ mes11|safe }},
+                {{ mes12|safe }},
+                {{ mes13|safe }},
+                {{ mes14|safe }},
+                {{ mes15|safe }},
+                {{ mes16|safe }},
+                {{ mes17|safe }},
+                {{ mes18|safe }},
+                {{ mes19|safe }},
+                {{ mes20|safe }}
+            ],
+            backgroundColor: [
+                '#3498db', '#ff5733', '#58d68d', '#d35400', '#3498db', '#ff5733', '#58d68d', '#d35400', '#3498db', '#ff5733', '#58d68d', '#d35400', '#3498db', '#ff5733', '#58d68d', '#d35400', '#3498db', '#ff5733', '#58d68d', '#d35400',
+            ],
+            borderWidth: 1,
+            borderColor: '#2979b0',
+        }
+    ]
+};
+
+
+        // ... (Rest of your chart configuration remains the same)
+
+        // Define chart options with y-axis in percentage
+        var options = {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100,
+                    callback: function (value) {
+                        return value + '%';
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        };
+
+        // Create the bar chart
+        var myBarChart = new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: options
+        });
+
+        // Handle the click event for the logout button
+        $(document).ready(function(){
+            $(".logout-button").click(function(event){
+                event.preventDefault();
+                window.location.href="goto";
+            });
+        });
+    </script>
+</body>
+</html>

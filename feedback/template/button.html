@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        /* Your CSS styles here */
+        
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f8f8f8;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #333;
+        }
+
+        .btn-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 4rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-right: 1rem;
+        }
+
+        .btn-admin {
+            background-color: #007bff;
+        }
+
+        .btn-admin:hover {
+            background-color: #0062cc;
+        }
+
+        .btn-customer {
+            background-color: #28a745;
+        }
+
+        .btn-customer:hover {
+            background-color: #1e7e34;
+        }
+
+        /* Add the following style for the logout button */
+        .logout-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+    
+</head>
+<body>
+    <input type="submit" class="logout-btn" value="Home" onclick="location.href='goto'">
+
+    <h1>Select Department</h1>
+    <div class="btn-container">
+        <button id="displayDataBtn1" class="btn btn-admin">CSE</button>
+        <button id="displayOverallDataBtn2" class="btn btn-customer">IT</button>
+        <button id="displayOverallDataBtn3" class="btn btn-customer">ECE</button>
+        <button id="displayOverallDataBtn4" class="btn btn-customer">EEE</button>
+    </div>
+</body>
+
+<script>
+    // Add a click event listener for the Display Data button
+    document.getElementById('displayDataBtn1').addEventListener('click', function() {
+        // Redirect to the desired URL when the button is clicked
+        window.location.href = '/display_data1'; // Replace with the actual URL
+    });
+
+    // Add a click event listener for the Display Overall Data button
+    document.getElementById('displayOverallDataBtn2').addEventListener('click', function() {
+        // Redirect to the desired URL when the button is clicked
+        window.location.href = '/display_overall2'; // Replace with the actual URL
+    });
+    document.getElementById('displayOverallDataBtn3').addEventListener('click', function() {
+        // Redirect to the desired URL when the button is clicked
+        window.location.href = '/display_overall3'; // Replace with the actual URL
+    });
+    document.getElementById('displayOverallDataBtn4').addEventListener('click', function() {
+        // Redirect to the desired URL when the button is clicked
+        window.location.href = '/display_overall4'; // Replace with the actual URL
+    });
+</script>
+</html>
+
+</html>

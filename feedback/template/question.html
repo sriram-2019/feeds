@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Infrastructure Survey</title>
+    
+</head>
+<style>
+    /* Reset some default styles */
+    body {
+        /* Your existing background styles */
+        background-image: url("{% static 'velammal-college-of-engineering-and-technology-vcet-madurai (1).jpg'%}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        font-family: Arial, sans-serif;
+        color: #333;
+       
+        /* Add blur effect */
+        backdrop-filter: blur(5px); /* Adjust the blur value as needed */
+    }
+    p {
+    color: #000; /* Dark black color */
+}
+.question p {
+    color: #000; /* Darkest black color (pure black) */
+}
+.option input[type="radio"] {
+    width: 20px; /* Increase width */
+    height: 20px; /* Increase height */
+}
+
+
+
+    /* Body styles with background image */
+    body {
+        background-image: url("{% static 'velammal-college-of-engineering-and-technology-vcet-madurai (1).jpg'%}"); /* Replace with your background image URL */
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        font-family: Arial, sans-serif;
+        color: #333;
+    }
+
+    /* Container styles */
+    /* Container styles */
+.questions-container {
+    background-color: rgb(255, 255, 255); /* Semi-transparent white background */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+
+    /* Header styles */
+    h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    /* Question styles */
+    .question {
+        margin-bottom: 20px;
+    }
+
+    /* Option styles */
+    .options {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    .option {
+        flex: 1;
+        display: flex;
+        align-items: center;
+    }
+
+    /* Submit Button styles */
+    .submit-button {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    button {
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #90EE90;
+    }
+</style>
+
+<body>
+    <div class="questions-container">
+        <h2>College Infrastructure Survey</h2>
+        <form method="POST">
+            {% csrf_token %}
+            
+            <!-- Question 1 -->
+            <div class="question">
+                <p>1. The classrooms are equipped with adequate teaching aids?</p>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="question1" value="5"> Strongly Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question1" value="4"> Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question1" value="3"> Neutral
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question1" value="2"> Disagree
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="question1" value="1"> Strongly Disagree
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question">
+                <p>2. The classroom ambience is good?</p>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="question2" value="5"> Strongly Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question2" value="4"> Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question2" value="3"> Neutral
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question2" value="2"> Disagree
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="question2" value="1"> Strongly Disagree
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question">
+                <p>3. Equipment available in the labs meet the curriculum and syllabi?</p>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="question3" value="5"> Strongly Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question3" value="4"> Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question3" value="3"> Neutral
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question3" value="2"> Disagree
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="question3" value="1"> Strongly Disagree
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question">
+                <p>4. Equipment in the lab(s) are in working condition.</p>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="question4" value="5"> Strongly Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question4" value="4"> Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question4" value="3"> Neutral
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question4" value="2"> Disagree
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="question4" value="1"> Strongly Disagree
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question">
+                <p>5. The prescribed books/reading materials are available in the library.</p>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="question5" value="5"> Strongly Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question5" value="4"> Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question5" value="3"> Neutral
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question5" value="2"> Disagree
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="question5" value="1"> Strongly Disagree
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question">
+                <p>6. Available reading space in library/seminar hall is satisfactory.</p>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="question6" value="5"> Strongly Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question6" value="4"> Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question6" value="3"> Neutral
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question6" value="2"> Disagree
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="question6" value="1"> Strongly Disagree
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="question">
+                <p>7. Photocopying facility in the college campus / library is available.</p>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="question7" value="5"> Strongly Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question7" value="4"> Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question7" value="3"> Neutral
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question7" value="2"> Disagree
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="question7" value="1"> Strongly Disagree
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="question">
+                <p>8. Online educational resources are available and accessible.</p>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="question8" value="5"> Strongly Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question8" value="4"> Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question8" value="3"> Neutral
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question8" value="2"> Disagree
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="question8" value="1"> Strongly Disagree
+                    </div>
+                </div>
+            </div>
+            <!-- Question 9 -->
+            <div class="question">
+                <p>9. Internet facilities are available in the department.</p>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="question9" value="5"> Strongly Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question9" value="4"> Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question9" value="3"> Neutral
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question9" value="2"> Disagree
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="question9" value="1"> Strongly Disagree
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="question">
+                <p>10. The functioning of the placement cell in the Institute is satisfactory.</p>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="question10" value="5"> Strongly Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question10" value="4"> Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question10" value="3"> Neutral
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question10" value="2"> Disagree
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="question10" value="1"> Strongly Disagree
+                    </div>
+                </div>
+            </div>
+            <!-- Question 11 -->
+            <div class="question">
+                <p>11. Indoor / Outdoor games/ Gymnastic facilities are satisfactory.</p>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="question11" value="5"> Strongly Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question11" value="4"> Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question11" value="3"> Neutral
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question11" value="2"> Disagree
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="question11" value="1"> Strongly Disagree
+                    </div>
+                </div>
+            </div>
+            <!-- Question 12 -->
+            <div class="question">
+                <p>12. Transport facilities are sufficient.</p>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="question12" value="5"> Strongly Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question12" value="4"> Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question12" value="3"> Neutral
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question12" value="2"> Disagree
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="question12" value="1"> Strongly Disagree
+                    </div>
+                </div>
+            </div>
+            <!-- Question 13 -->
+            <div class="question">
+                <p>13. Hostel facilities are satisfactory.</p>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="question13" value="5"> Strongly Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question13" value="4"> Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question13" value="3"> Neutral
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question13" value="2"> Disagree
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="question13" value="1"> Strongly Disagree
+                    </div>
+                </div>
+            </div>
+            <!-- Question 14 -->
+            <div class="question">
+                <p>14. Drinking water is available in the campus.</p>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="question14" value="5"> Strongly Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question14" value="4"> Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question14" value="3"> Neutral
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question14" value="2"> Disagree
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="question14" value="1"> Strongly Disagree
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 15 -->
+            <div class="question">
+                <p>15. Toilets/washrooms are cleaned properly and hygiene is maintained.</p>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="question15" value="5"> Strongly Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question15" value="4"> Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question15" value="3"> Neutral
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question15" value="2"> Disagree
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="question15" value="1"> Strongly Disagree
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 16 -->
+            <div class="question">
+                <p>16. Mentoring system/Grievances/problems are redressed/solved well in time.</p>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="question16" value="5"> Strongly Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question16" value="4"> Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question16" value="3"> Neutral
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question16" value="2"> Disagree
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="question16" value="1"> Strongly Disagree
+                    </div>
+                </div>
+            </div>
+            <!-- Question 17 -->
+            <div class="question">
+                <p>17. The campus is green and eco-friendly.</p>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="question17" value="5"> Strongly Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question17" value="4"> Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question17" value="3"> Neutral
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question17" value="2"> Disagree
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="question17" value="1"> Strongly Disagree
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 18 -->
+            <div class="question">
+                <p>18. The college organizes co-curricular and extra-curricular activities regularly.</p>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="question18" value="5"> Strongly Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question18" value="4"> Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question18" value="3"> Neutral
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question18" value="2"> Disagree
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="question18" value="1"> Strongly Disagree
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 19 -->
+            <div class="question">
+                <p>19. The college is inclusive and promotes diversity.</p>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="question19" value="5"> Strongly Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question19" value="4"> Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question19" value="3"> Neutral
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question19" value="2"> Disagree
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="question19" value="1"> Strongly Disagree
+                    </div>
+                </div>
+            </div>
+            <!-- Question 20 -->
+            <div class="question">
+                <p>20. Overall, I am satisfied with the college's infrastructure and facilities.</p>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="question20" value="5"> Strongly Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question20" value="4"> Agree
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question20" value="3"> Neutral
+                    </div>
+                    <div class="option" style="margin-right: 10px;">
+                        <input type="radio" name="question20" value="2"> Disagree
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="question20" value="1"> Strongly Disagree
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="submit-button">
+                <button id="submitButton" type="button" >Submit</button>
+            </div>
+            </form>
+            
+            </div>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>    
+            $(document).ready(function() {
+                $("#submitButton").click(function() {
+                    // Create an object to store question numbers and their selected values
+                    var questionValues = {};
+            
+                    // Check if all radio buttons are checked and collect their values
+                    var allRadioButtonsChecked = true;
+                    $(".question").each(function() {
+                        var radioButtonName = $(this).find("input[type='radio']").attr("name");
+                        var selectedValue = $("input[name='" + radioButtonName + "']:checked").val();
+            
+                        if (selectedValue) {
+                            // Store the selected value in the questionValues object
+                            questionValues[radioButtonName] = selectedValue;
+                        } else {
+                            allRadioButtonsChecked = false;
+                            return false; // Exit the loop if any radio button is not checked
+                        }
+                    });
+            
+                    if (allRadioButtonsChecked) {
+                        const formData = new FormData();
+            
+                        // Append your form fields and values to it
+                    
+                        formData.append('question1', $("input[name='question1']:checked").val());
+                            formData.append('question2', $("input[name='question2']:checked").val());
+                            formData.append('question3', $("input[name='question3']:checked").val());
+                            formData.append('question4', $("input[name='question4']:checked").val());
+                            formData.append('question5', $("input[name='question5']:checked").val());
+                            formData.append('question6', $("input[name='question6']:checked").val());
+                            formData.append('question7', $("input[name='question7']:checked").val());
+                            formData.append('question8', $("input[name='question8']:checked").val());
+                            formData.append('question9', $("input[name='question9']:checked").val());
+                            formData.append('question10', $("input[name='question10']:checked").val());
+                            formData.append('question11', $("input[name='question11']:checked").val());
+                            formData.append('question12', $("input[name='question12']:checked").val());
+                            formData.append('question13', $("input[name='question13']:checked").val());
+                            formData.append('question14', $("input[name='question14']:checked").val());
+                            formData.append('question15', $("input[name='question15']:checked").val());
+                            formData.append('question16', $("input[name='question16']:checked").val());
+                            formData.append('question17', $("input[name='question17']:checked").val());
+                            formData.append('question18', $("input[name='question18']:checked").val());
+                            formData.append('question19', $("input[name='question19']:checked").val());
+                            formData.append('question20', $("input[name='question20']:checked").val());
+            
+                        var csrfToken = $("input[name='csrfmiddlewaretoken']").val();
+                        formData.append("csrfmiddlewaretoken", csrfToken);
+                        $.ajax({
+                            type: "POST",
+                            url: "/getdata/", // Replace with your Django view URL
+                            data: formData,
+                            processData: false,  // Important when sending FormData
+                            contentType: false, // Set content type to JSON
+                            success: function(response) {
+                                // Handle the server response here
+                                if(response.message){
+                                    window.location.href="log";
+                                }
+                                // You can display a success message or redirect the user
+                            },
+                            error: function(xhr, textStatus, errorThrown) {
+                                // Handle any errors here
+                                console.error(xhr.responseText);
+                            }
+                        });
+                    } else {
+                        // Alert the user if not all radio buttons are checked
+                        alert("Please answer all questions before submitting.");
+                    }
+                });
+            });
+            
+            
+            
+</script>
+</body>
+</html>

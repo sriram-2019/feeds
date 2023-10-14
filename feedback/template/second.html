@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f7f7f7;
+            background-image: url("{% static 'velammal-college-of-engineering-and-technology-vcet-madurai (1).jpg'%}");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .rollNumber {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .welcome-container {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #90EE90;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            margin: 0 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        #userInfo {
+            margin-bottom: 20px;
+            text-align: left; /* Align text to the left */
+        }
+
+        #userInfo p {
+            display: flex;
+            justify-content: space-between; /* Align pairs of data to left and right */
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+    <body>
+        
+          
+        <div class="welcome-container">
+            <form method="POST"> 
+                 {% csrf_token %}
+            <h2>Welcome</h2>
+            <div id="userInfo">
+                <p><strong>Name:</strong> {{ name }}</p>
+                <p><strong>Roll Number:</strong> {{ reg }}</p>
+                <p><strong>Department:</strong> {{ dept }}</p>
+                <p><strong>Year:</strong> {{ year }}</p>
+            </div>
+            <button name="sub" id="submitButton">Continue</button>
+            </form>
+        </div>
+        
+    </body>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#submitButton").click(function() {
+                // Prepare the data to be sent to the server
+                var formData = $("form").serialize();
+                // Send a POST request to the server
+                $.ajax({
+                    type: "POST",
+                    url: "/survey/", 
+                    data:formData,// Replace with your actual server endpoint
+                    success: function(response) {
+                    if(response.message){
+                        window.location.href="survey2"
+                    }
+                        
+                    },
+                    error: function(error) {
+                        // Handle errors here
+                        console.log("Error:", error);
+                    }
+                });
+            });
+        });
+    </script>
+    
+</html>
